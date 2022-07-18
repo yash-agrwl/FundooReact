@@ -2,8 +2,10 @@
     box-sizing: border-box;
 }
 
-.outer-box {
-    background-color: #fff;
+.header_outer-box {
+    background-color: rgba(255,255,255,1);
+    box-shadow: inset 0 -1px 0 0 #dadce0;
+    z-index: 986;
     color: #202124;
     font-family: "Roboto", arial, sans-serif;
     font-size: 15px;
@@ -13,7 +15,7 @@
     min-width: 360px;
 }
 
-.inner-box {
+.header_inner-box {
     padding: 8px;
     display: flex;
     justify-content: space-between;
@@ -23,7 +25,7 @@
     min-width: 320px;
 }
 
-.box1 {
+.header_box1 {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -32,31 +34,41 @@
     padding-right: 30px;
 }
 
-.iconButton {
-    margin: 0 4px;
-    color: #5f6368;
+.header_icon-button {
+    color: #5f6368 !important;
+    /* color: blue; */
 }
 
-.keep {
+#menu,
+#search,
+#clear {
+    margin: 0 4px;
+}
+
+#clear {
+    visibility: hidden;
+}
+
+.header_box1_heading {
     display: flex;
     align-items: center;
 }
 
-.keep img{
+.header_box1_heading img {
     width: 40px;
     height: 40px;
     margin-right: 4px;
     margin-bottom: 4px;
 }
 
-.keep span{
+.header_box1_heading span {
     padding-left: 4px;
-    font-family: "Product Sans",Arial,sans-serif;
+    font-family: "Product Sans", Arial, sans-serif;
     font-size: 22px;
     line-height: 24px;
 }
 
-.box2 {
+.header_box2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -64,7 +76,7 @@
     height: 48px;
 }
 
-.search-form {
+.header_box2_search-form {
     display: flex;
     align-items: center;
     background: #f1f3f4;
@@ -76,17 +88,19 @@
     margin-left: 10px;
 }
 
-.inputbase {
+.header_input-base {
     flex: 1 1 auto;
     padding: 8px 0;
     color: #5f6368;
 }
 
-.settings{
-    white-space: nowrap;
+.header_icon-group {
+    display: flex;
+    flex-direction: row;
+    /* white-space: nowrap; */
 }
 
-.box3 {
+.header_box3 {
     display: flex;
     align-items: center;
     height: 48px;
@@ -95,7 +109,54 @@
     white-space: nowrap;
 }
 
-.box3 img{
+.header_box3 img {
     border-radius: 50%;
     margin: 8px;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .header_box3 {
+        padding-left: 0;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .header_box2 {
+        justify-content: flex-end;
+    }
+
+    .header_box2_search-form {
+        background-color: inherit;
+        border: none;
+        margin: 0;
+        flex-grow: 0;
+    }
+
+    #search {
+        margin: 0;
+    }
+
+    #search-input {
+        display: none;
+    }
+
+    #clear {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+
+    #list-view {
+        display: none;
+    }
+
+    .header_box1 {
+        padding-right: 14px;
+    }
+
 }

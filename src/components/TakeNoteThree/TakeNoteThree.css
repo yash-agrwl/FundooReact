@@ -1,0 +1,112 @@
+.note3_inner-box {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    width: 242px;
+    min-height: 104px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.note3_inner-box:hover {
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+
+.note3_inner-box:hover>.note3_icon-group {
+    visibility: visible;
+}
+
+.note3_inner-box:hover>.note3_content>.note3_content_box1>.note3_box1_pin-icon {
+    visibility: visible;
+}
+
+.note3_inner-box:hover > #note3_select-note {
+    visibility: visible;
+}
+
+#note3_select-note {
+    position: absolute;
+    transform: translate(-9px,-9px);
+    /* top: 33px;
+    right: 118px; */
+    color: #202124;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.note3_content {
+    min-height: 60px;
+    outline: none;
+    white-space: pre-wrap;
+    word-break: break-word;
+    cursor: default;
+    user-select: none;
+}
+
+.note3_content_box1 {
+    display: flex;
+}
+
+.note3_box1_pin-icon {
+    position: relative;
+    top: 6px;
+    right: 12px;
+    height: 34px;
+    visibility: hidden;
+}
+
+#note3_pin-note:hover {
+    color: #202124;
+}
+
+.note3_title {
+    padding: 12px 16px 0;
+    text-align: left;
+    letter-spacing: .00625em;
+    /* font-family: "Google Sans",Roboto,Arial,sans-serif; */
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    min-height: 38px;
+    border-radius: 8px 8px 0 0;
+    width: 100%;
+}
+
+.note3_description {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: .875rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.25rem;
+    color: #202124;
+    text-align: left;
+    padding: 4px 16px 12px 16px;
+    width: 100%;
+    min-height: 30px;   
+}
+
+.note3_icon-group {
+    display: flex;
+    margin: 4px 0;
+    font-size: 12px;
+    line-height: 26px;
+    height: 34px;
+    width: 100%;
+    visibility: hidden;
+}
+
+.note3_icon-button {
+    opacity: 0.80;
+    margin: 0 3px !important;
+    color: #202124 !important;
+    padding: 8px !important;
+}
+
+.note3_icon-button:hover {
+    opacity: 1;
+}
+
+.icon {
+    width: 18px !important;
+    height: 18px !important;
+}

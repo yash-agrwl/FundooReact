@@ -1,0 +1,106 @@
+.note2_outer-box {
+    width: 100vw;
+    min-height: 136px;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 16px
+}
+
+.note2_inner-box {
+    display: flex;
+    flex-direction: column;
+    height: 136px;
+    width: 600px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+    color: #202124;
+}
+
+.note2_input {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    outline: none;
+    min-height: 43px;
+    letter-spacing: .00625em;
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+    color: inherit;
+}
+
+.note2_box1,
+.note2_box2,
+.note2_box3 {
+    width: 100%;
+    display: flex;
+    height: inherit;
+}
+
+.note2_box1_pin-icon {
+    padding: 5px;
+}
+
+.note2_box3 {
+    flex-flow: row-reverse wrap-reverse;
+    margin: 4px 0;
+    font-size: 12px;
+    line-height: 26px;
+    height: 34px;
+}
+
+.note2_icon-button {
+    margin: 0 8px !important;
+    color: #5f6368 !important;
+    padding: 8px !important;
+}
+
+/* .css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root {
+    margin: 0 8px !important;
+    color:#5f6368!important;
+} */
+
+/* .note2_icon-group button{
+    margin: 0 8px;
+    color:#5f6368;
+} */
+
+.closeButton {
+    margin-right: 15px;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, .87);
+    letter-spacing: .01785714em;
+    font-family: "Google Sans",Roboto,Arial,sans-serif;
+    font-size: .875rem;
+    font-weight: 500;
+    /* line-height: 1.25rem; */
+    height: 34px;
+    padding: 8px 24px;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    background-color: rgba(95, 99, 104, 0.039);
+}
+
+.note2_icon-group {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.icon {
+    width: 18px !important;
+    height: 18px !important;
+}

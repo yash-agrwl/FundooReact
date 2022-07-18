@@ -1,0 +1,8 @@
+.note3_container {
+    width: 100vw;
+    max-width: 1296px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
