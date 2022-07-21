@@ -6,6 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
 import { setColor } from '../../services/dataservice';
 import './colorpoper.css'
+import { Tooltip } from '@mui/material';
 
 export default function ColorPopper(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -42,11 +43,11 @@ export default function ColorPopper(props) {
     return (
         <div>
 
-            <IconButton onClick={handleClick} title='Background options' className='note3_icon-button' aria-label="New list" size='small'>
-
-                <ColorLensOutlinedIcon className='icon' />
-
-            </IconButton>
+            <Tooltip title='Background options'>
+                <IconButton onClick={handleClick} className='note3_icon-button' aria-label="New list" size='small'>
+                    <ColorLensOutlinedIcon className='icon' />
+                </IconButton>
+            </Tooltip>
 
             <ClickAwayListener>
 

@@ -1,3 +1,11 @@
+.MuiTooltip-tooltip{
+    /* font-family: Roboto, Arial, sans-serif!important; */
+    font-size: 13px!important;
+    background-color: rgb(0, 0, 0, 65%)!important;
+    position: relative;
+    top: -12px;
+}
+
 .note3_inner-box {
     display: flex;
     flex-direction: column;
@@ -6,10 +14,6 @@
     min-height: 104px;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
-}
-
-.MuiTooltip-tooltip{
-    font-size: 33px;
 }
 
 .note3_inner-box:hover {

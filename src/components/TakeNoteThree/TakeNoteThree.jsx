@@ -92,7 +92,7 @@ function TakeNoteThree(props) {
                     <div className="note3_box1_pin-icon">
 
                         <Tooltip title="Pin note">
-                            <IconButton id='note3_pin-note' title='Pin note' aria-label="pin-note" size='small'>
+                            <IconButton id='note3_pin-note' aria-label="pin-note" size='small'>
                                 <PushPinOutlinedIcon />
                             </IconButton>
                         </Tooltip>
@@ -109,27 +109,37 @@ function TakeNoteThree(props) {
 
             <div className="note3_icon-group">
 
-                <IconButton className='note3_icon-button' title='Remind me' aria-label="New list" size='small'>
-                    <AddAlertOutlinedIcon className='icon' />
-                </IconButton>
+                <Tooltip title='Remind me'>
+                    <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                        <AddAlertOutlinedIcon className='icon' />
+                    </IconButton>
+                </Tooltip>
 
-                <IconButton className='note3_icon-button' title='Collaborator' aria-label="New list" size='small'>
-                    <PersonAddAltOutlinedIcon className='icon' />
-                </IconButton>
+                <Tooltip title='Collaborator'>
+                    <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                        <PersonAddAltOutlinedIcon className='icon' />
+                    </IconButton>
+                </Tooltip>
 
                 <ColorPopper action='update' id={props.note.noteId} />
 
-                <IconButton className='note3_icon-button' title='Add image' aria-label="New list" size='small'>
-                    <ImageOutlinedIcon className='icon' />
-                </IconButton>
+                <Tooltip title='Add image'>
+                    <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                        <ImageOutlinedIcon className='icon' />
+                    </IconButton>
+                </Tooltip>
 
-                <IconButton onClick={() => UpdateArchive(props.note.noteId)} className='note3_icon-button' title='Archive' aria-label="New list" size='small'>
-                    <ArchiveOutlinedIcon className='icon' />
-                </IconButton>
+                <Tooltip title='Archive'>
+                    <IconButton onClick={() => UpdateArchive(props.note.noteId)} className='note3_icon-button' aria-label="New list" size='small'>
+                        <ArchiveOutlinedIcon className='icon' />
+                    </IconButton>
+                </Tooltip>
 
-                <IconButton className='note3_icon-button' title='More' aria-label="New list" size='small'>
-                    <MoreVertOutlinedIcon className='icon' />
-                </IconButton>
+                <Tooltip title='More'>
+                    <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                        <MoreVertOutlinedIcon className='icon' />
+                    </IconButton>
+                </Tooltip>
 
             </div>
 
