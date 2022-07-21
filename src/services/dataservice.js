@@ -24,3 +24,16 @@ export const toggleArchive = (id) => {
     let response = axios.patch(`https://localhost:44349/api/Note/ToggleArchive/${id}`, id, headerConfig)
     return response
 }
+
+export const setColor = (noteColorObj) => {
+    console.log(noteColorObj)
+    let response = axios.patch(
+        `https://localhost:44349/api/Note/SetColor?noteId=${noteColorObj.noteId}&noteColor=${encodeURIComponent(noteColorObj.noteColor)}`,
+        null, headerConfig)
+    return response
+}
+
+export const updateNotes = (createNoteObj) => {
+    let response = axios.patch("https://localhost:44349/api/Note/Edit", createNoteObj, headerConfig)
+    return response
+}

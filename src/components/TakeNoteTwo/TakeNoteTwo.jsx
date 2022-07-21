@@ -5,17 +5,19 @@ import IconButton from '@mui/material/IconButton';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import AddAlertOutlinedIcon from '@mui/icons-material/AddAlertOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
+// import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import { createNotes } from '../../services/dataservice';
+import ColorPopper from '../colorPoper/colorpoper';
+import { TextareaAutosize } from '@mui/material';
 
 function TakeNoteTwo(props) {
 
-    const [CreateNoteObj, setCreateNoteObj] = React.useState({ title: "", body: "", archive: false });
+    const [CreateNoteObj, setCreateNoteObj] = React.useState({ title: "", body: "", archive: false, color: "" });
 
     const TakeTitle = (event) => {
         setCreateNoteObj((prevState) => ({ ...prevState, title: event.target.value }))
@@ -40,16 +42,21 @@ function TakeNoteTwo(props) {
         setCreateNoteObj((prevState) => ({ ...prevState, archive: true }))
     }
 
+    const listenToColorPoper = (bgcolor) => {
+        setCreateNoteObj((prevState) => ({ ...prevState, color: bgcolor }))
+    }
+
     return (
         <div className='note2_outer-box'>
 
             <ClickAwayListener onClickAway={() => props.listen()}>
 
-                <div className="note2_inner-box">
+                <div className="note2_inner-box" style={{ backgroundColor: CreateNoteObj.color, borderColor: CreateNoteObj.color }}>
 
                     <div className="note2_box1">
 
-                        <input onChange={TakeTitle} className='note2_input' type='text' placeholder='Title' />
+                        <TextareaAutosize onChange={TakeTitle} className='note2_input' type='text' placeholder='Title'
+                            style={{ backgroundColor: CreateNoteObj.color }}/>
 
                         <div className="note2_box1_pin-icon">
 
@@ -63,7 +70,8 @@ function TakeNoteTwo(props) {
 
                     <div className="note2_box2">
 
-                        <input onChange={TakeDescription} className='note2_input' type="text" placeholder='Take a note...' />
+                        <TextareaAutosize onChange={TakeDescription} className='note2_input' type="text" placeholder='Take a note...'
+                            style={{ backgroundColor: CreateNoteObj.color }} height='44px'/>
 
                     </div>
 
@@ -81,9 +89,7 @@ function TakeNoteTwo(props) {
                                 <PersonAddAltOutlinedIcon className='icon' />
                             </IconButton>
 
-                            <IconButton className='note2_icon-button' aria-label="New list" size='small'>
-                                <ColorLensOutlinedIcon className='icon' />
-                            </IconButton>
+                            <ColorPopper action='create' listenToColorPoper={listenToColorPoper} />
 
                             <IconButton className='note2_icon-button' aria-label="New list" size='small'>
                                 <ImageOutlinedIcon className='icon' />

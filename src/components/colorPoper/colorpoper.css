@@ -1,0 +1,18 @@
+/* #simple-popper {
+    transform: translate3d(184px, 223px, 0px) !important;
+} */
+
+.colorpoper_box {
+    display: flex;
+    border: 1px solid transparent!important;
+    border-radius: 10px;
+    box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+
+.colorpoper_color-list{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    margin-left: 2px;
+}

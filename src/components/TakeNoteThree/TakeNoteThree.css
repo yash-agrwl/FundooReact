@@ -26,7 +26,7 @@
 
 #note3_select-note {
     position: absolute;
-    transform: translate(-9px,-9px);
+    transform: translate(-8px,-8px);
     /* top: 33px;
     right: 118px; */
     color: #202124;
@@ -100,6 +100,8 @@
     margin: 0 3px !important;
     color: #202124 !important;
     padding: 8px !important;
+    width: 34px;
+    height: 34px;
 }
 
 .note3_icon-button:hover {
