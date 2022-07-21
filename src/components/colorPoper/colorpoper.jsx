@@ -42,7 +42,7 @@ export default function ColorPopper(props) {
     return (
         <div>
 
-            <IconButton onClick={handleClick} className='note3_icon-button' aria-label="New list" size='small'>
+            <IconButton onClick={handleClick} title='Background options' className='note3_icon-button' aria-label="New list" size='small'>
 
                 <ColorLensOutlinedIcon className='icon' />
 

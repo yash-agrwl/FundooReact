@@ -16,7 +16,8 @@ import Box from '@mui/material/Box';
 import { TextareaAutosize } from '@mui/material';
 import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
-import './EditNotesModal.css'
+import './EditNotesModal.css';
+import Tooltip from '@mui/material/Tooltip';
 
 
 function TakeNoteThree(props) {
@@ -76,7 +77,9 @@ function TakeNoteThree(props) {
 
         <div className="note3_inner-box" style={{ backgroundColor: props.note.color, borderColor: props.note.color }}>
 
-            <CheckCircleRoundedIcon id='note3_select-note' />
+            <Tooltip title="Select note">
+                <CheckCircleRoundedIcon id='note3_select-note' />
+            </Tooltip>
 
             <div className="note3_content" onClick={() => handleOpen(props.note)}>
 
@@ -88,9 +91,11 @@ function TakeNoteThree(props) {
 
                     <div className="note3_box1_pin-icon">
 
-                        <IconButton id='note3_pin-note' aria-label="pin-note" size='small'>
-                            <PushPinOutlinedIcon />
-                        </IconButton>
+                        <Tooltip title="Pin note">
+                            <IconButton id='note3_pin-note' title='Pin note' aria-label="pin-note" size='small'>
+                                <PushPinOutlinedIcon />
+                            </IconButton>
+                        </Tooltip>
 
                     </div>
 
@@ -104,25 +109,25 @@ function TakeNoteThree(props) {
 
             <div className="note3_icon-group">
 
-                <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                <IconButton className='note3_icon-button' title='Remind me' aria-label="New list" size='small'>
                     <AddAlertOutlinedIcon className='icon' />
                 </IconButton>
 
-                <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                <IconButton className='note3_icon-button' title='Collaborator' aria-label="New list" size='small'>
                     <PersonAddAltOutlinedIcon className='icon' />
                 </IconButton>
 
                 <ColorPopper action='update' id={props.note.noteId} />
 
-                <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                <IconButton className='note3_icon-button' title='Add image' aria-label="New list" size='small'>
                     <ImageOutlinedIcon className='icon' />
                 </IconButton>
 
-                <IconButton onClick={() => UpdateArchive(props.note.noteId)} className='note3_icon-button' aria-label="New list" size='small'>
+                <IconButton onClick={() => UpdateArchive(props.note.noteId)} className='note3_icon-button' title='Archive' aria-label="New list" size='small'>
                     <ArchiveOutlinedIcon className='icon' />
                 </IconButton>
 
-                <IconButton className='note3_icon-button' aria-label="New list" size='small'>
+                <IconButton className='note3_icon-button' title='More' aria-label="New list" size='small'>
                     <MoreVertOutlinedIcon className='icon' />
                 </IconButton>
 
@@ -154,7 +159,7 @@ function TakeNoteThree(props) {
                     <div className="modal_box2">
 
                         <TextareaAutosize onChange={changeBody} className='modal_input' id='modal_body' type="text" defaultValue={editObj.body}
-                            placeholder='Take a note...' style={{ backgroundColor: props.note.color }}/>
+                            placeholder='Take a note...' style={{ backgroundColor: props.note.color }} />
 
                     </div>
 
