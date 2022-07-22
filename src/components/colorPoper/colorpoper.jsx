@@ -15,9 +15,13 @@ export default function ColorPopper(props) {
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
-    const colors = ["#fff", "#f28b82", "#fbbc04", "#fff475", "#ccff90", "#a7ffeb", "#cbf0f8", "#aecbfa", "#d7aefb",
-        "#fdcfe8", "#e6c9a8", "#e8eaed"]
-    //const colors = ["red", "blue", "yellow"]
+    // const colors = ["#fff", "#f28b82", "#fbbc04", "#fff475", "#ccff90", "#a7ffeb", "#cbf0f8", "#aecbfa", "#d7aefb",
+    //     "#fdcfe8", "#e6c9a8", "#e8eaed"]
+
+    const colors = [{ name: "Default", value: "#fff" }, { name: "Red", value: "#f28b82" }, { name: "Orange", value: "#fbbc04" },
+    { name: "Yellow", value: "#fff475" }, { name: "Green", value: "#ccff90" }, { name: "Teal", value: "#a7ffeb" },
+    { name: "Blue", value: "#cbf0f8" }, { name: "Dark Blue", value: "#aecbfa" }, { name: "Purple", value: "#d7aefb" },
+    { name: "Pink", value: "#fdcfe8" }, { name: "Brown", value: "#e6c9a8" }, { name: "Gray", value: "#e8eaed" }]
 
     const open = Boolean(anchorEl);
     const id = open ? ((props.action === 'create') ? 'simple-popper' : 'simple-popper1') : undefined;
@@ -56,9 +60,14 @@ export default function ColorPopper(props) {
                     <Box className='colorpoper_box' sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
 
                         {colors.map((color) =>
-                            <Tooltip title={color}>
-                                <div className='colorpoper_color-list' style={{ backgroundColor: color }} onClick={() => pickColor(color)} />
+
+                            <Tooltip title={color.name}>
+
+                                <div className='colorpoper_color-list' style={{ backgroundColor: color.value }}
+                                    onClick={() => pickColor(color.value)} />
+
                             </Tooltip>
+
                         )}
 
                     </Box>
