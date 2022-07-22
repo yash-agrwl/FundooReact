@@ -148,6 +148,7 @@ function TakeNoteThree(props) {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                style={{ zIndex: 10 }}
             >
                 <Box className='modal_inner-box' style={{ backgroundColor: props.note.color, borderColor: props.note.color }}>
 
@@ -158,9 +159,11 @@ function TakeNoteThree(props) {
 
                         <div className="modal_box1_pin-icon">
 
-                            <IconButton id='modal_pin-note' aria-label="pin-note" size='small'>
-                                <PushPinOutlinedIcon />
-                            </IconButton>
+                            <Tooltip title='Pin note'>
+                                <IconButton id='modal_pin-note' aria-label="pin-note" size='small'>
+                                    <PushPinOutlinedIcon />
+                                </IconButton>
+                            </Tooltip>
 
                         </div>
 
@@ -179,35 +182,49 @@ function TakeNoteThree(props) {
 
                         <div className="modal_icon-group">
 
-                            <IconButton className='modal_icon-button' aria-label="New list" size='small'>
-                                <AddAlertOutlinedIcon className='icon' />
-                            </IconButton>
+                            <Tooltip title='Remind me'>
+                                <IconButton className='modal_icon-button' aria-label="New list" size='small'>
+                                    <AddAlertOutlinedIcon className='icon' />
+                                </IconButton>
+                            </Tooltip>
 
-                            <IconButton className='modal_icon-button' aria-label="New list" size='small'>
-                                <PersonAddAltOutlinedIcon className='icon' />
-                            </IconButton>
+                            <Tooltip title='Collaborator'>
+                                <IconButton className='modal_icon-button' aria-label="New list" size='small'>
+                                    <PersonAddAltOutlinedIcon className='icon' />
+                                </IconButton>
+                            </Tooltip>
 
                             <ColorPopper action='update' id={props.note.noteId} />
 
-                            <IconButton className='modal_icon-button' aria-label="New list" size='small'>
-                                <ImageOutlinedIcon className='icon' />
-                            </IconButton>
+                            <Tooltip title='Add image'>
+                                <IconButton className='modal_icon-button' aria-label="New list" size='small'>
+                                    <ImageOutlinedIcon className='icon' />
+                                </IconButton>
+                            </Tooltip>
 
-                            <IconButton onClick={() => UpdateArchive(props.note.noteId)} className='modal_icon-button' aria-label="New list" size='small'>
-                                <ArchiveOutlinedIcon className='icon' />
-                            </IconButton>
+                            <Tooltip title='Archive'>
+                                <IconButton onClick={() => UpdateArchive(props.note.noteId)} className='modal_icon-button' aria-label="New list" size='small'>
+                                    <ArchiveOutlinedIcon className='icon' />
+                                </IconButton>
+                            </Tooltip>
 
-                            <IconButton className='modal_icon-button' aria-label="New list" size='small'>
-                                <MoreVertOutlinedIcon className='icon' />
-                            </IconButton>
+                            <Tooltip title='More'>
+                                <IconButton className='modal_icon-button' aria-label="New list" size='small'>
+                                    <MoreVertOutlinedIcon className='icon' />
+                                </IconButton>
+                            </Tooltip>
 
-                            <IconButton className='modal_icon-button' aria-label="New list" size='small' disabled>
-                                <UndoOutlinedIcon className='icon' />
-                            </IconButton>
+                            <Tooltip title='Undo'>
+                                <IconButton className='modal_icon-button' aria-label="New list" size='small' disabled>
+                                    <UndoOutlinedIcon className='icon' />
+                                </IconButton>
+                            </Tooltip>
 
-                            <IconButton className='modal_icon-button' aria-label="New list" size='small' disabled>
-                                <RedoOutlinedIcon className='icon' />
-                            </IconButton>
+                            <Tooltip title='Redo'>
+                                <IconButton className='modal_icon-button' aria-label="New list" size='small' disabled>
+                                    <RedoOutlinedIcon className='icon' />
+                                </IconButton>
+                            </Tooltip>
 
                         </div>
 

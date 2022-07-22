@@ -51,12 +51,14 @@ export default function ColorPopper(props) {
 
             <ClickAwayListener>
 
-                <Popper id={id} open={open} anchorEl={anchorEl}>
+                <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 20 }}>
 
                     <Box className='colorpoper_box' sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
 
                         {colors.map((color) =>
-                            <div className='colorpoper_color-list' style={{ backgroundColor: color }} onClick={() => pickColor(color)} />
+                            <Tooltip title={color}>
+                                <div className='colorpoper_color-list' style={{ backgroundColor: color }} onClick={() => pickColor(color)} />
+                            </Tooltip>
                         )}
 
                     </Box>
