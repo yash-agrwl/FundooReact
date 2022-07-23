@@ -15,6 +15,24 @@ export const getNotes = () => {
     return response
 }
 
+export const getArchive = () => {
+    console.log(headerConfig)
+    let response = axios.get("https://localhost:44349/api/Note/GetArchive", headerConfig)
+    return response
+}
+
+export const getReminders = () => {
+    console.log(headerConfig)
+    let response = axios.get("https://localhost:44349/api/Note/GetReminders", headerConfig)
+    return response
+}
+
+export const getTrash = () => {
+    console.log(headerConfig)
+    let response = axios.get("https://localhost:44349/api/Note/GetTrash", headerConfig)
+    return response
+}
+
 export const createNotes = (createNoteObj) => {
     let response = axios.post("https://localhost:44349/api/Note/Create", createNoteObj, headerConfig)
     return response
@@ -35,5 +53,10 @@ export const setColor = (noteColorObj) => {
 
 export const updateNotes = (createNoteObj) => {
     let response = axios.patch("https://localhost:44349/api/Note/Edit", createNoteObj, headerConfig)
+    return response
+}
+
+export const moveToTrash = (id) => {
+    let response = axios.patch(`https://localhost:44349/api/Note/MoveToTrash?noteId=${id}`,null, headerConfig)
     return response
 }

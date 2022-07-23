@@ -4,12 +4,15 @@ import Button from '@mui/material/Button';
 import './signin.css';
 import logo from '../../assets/logo.svg';
 import { logIn } from '../../services/userservice';
+import { useHistory, useNavigate } from "react-router-dom";
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 
 function Signin() {
     const [signInObj, setSignInObj] = React.useState({ email: "", password: "" });
     const [regexObj, setRegexObj] = React.useState({ emailBorder: false, emailHelper: "", pwdBorder: false, pwdHelper: "" });
+
+    let navigate = useNavigate();
 
     const TakeEmail = (event) => {
         setSignInObj((prevState) => ({ ...prevState, email: event.target.value }))
@@ -44,6 +47,7 @@ function Signin() {
             logIn(signInObj).then((response) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.token)
+                navigate("/dashboard")
             }).catch((error) => {
                 console.log(error)
             })
@@ -117,7 +121,7 @@ function Signin() {
 
                         <div className='signin_textbutton'>
 
-                            <Button>Create account</Button>
+                            <Button onClick={() => navigate("/signup")}>Create account</Button>
 
                         </div>
 

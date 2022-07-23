@@ -18,7 +18,8 @@ import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
 import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import './EditNotesModal.css';
 import Tooltip from '@mui/material/Tooltip';
-
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import { moveToTrash } from "../../services/dataservice";
 
 function TakeNoteThree(props) {
 
@@ -36,6 +37,15 @@ function TakeNoteThree(props) {
         console.log("noteid is: ", id)
         //let archive = {noteIdList: [id], isArchived: true}
         toggleArchive(id).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+
+    const DeleteNote = (id) => {
+        console.log("noteid is: ", id)
+        moveToTrash(id).then((response) => {
             console.log(response);
         }).catch((error) => {
             console.log(error)
@@ -135,9 +145,10 @@ function TakeNoteThree(props) {
                     </IconButton>
                 </Tooltip>
 
-                <Tooltip title='More'>
-                    <IconButton className='note3_icon-button' aria-label="New list" size='small'>
-                        <MoreVertOutlinedIcon className='icon' />
+                <Tooltip title='Delete note'>
+                    <IconButton onClick={() => DeleteNote(props.note.noteId)} className='note3_icon-button' aria-label="New list" size='small'>
+                        {/* <MoreVertOutlinedIcon className='icon' /> */}
+                        <DeleteOutlinedIcon className='icon' />
                     </IconButton>
                 </Tooltip>
 
@@ -148,7 +159,7 @@ function TakeNoteThree(props) {
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
-                style={{ zIndex: 10 }}
+                style={{ zIndex: 4001 }}
             >
                 <Box className='modal_inner-box' style={{ backgroundColor: props.note.color, borderColor: props.note.color }}>
 

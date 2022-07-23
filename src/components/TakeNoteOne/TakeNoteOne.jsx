@@ -5,6 +5,7 @@ import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import BrushIcon from '@mui/icons-material/Brush';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import InputBase from '@mui/material/InputBase';
+import { Tooltip } from '@mui/material';
 
 function TakeNoteOne(props) {
     return (
@@ -12,19 +13,26 @@ function TakeNoteOne(props) {
 
             <div className="note1_inner-box" onClick={() => props.listen()}>
 
-                <InputBase className='note1_input-base' placeholder="Take a note..." fullWidth/>
+                <InputBase className='note1_input-base' placeholder="Take a note..." fullWidth />
 
-                <IconButton aria-label="New list" size='large'>
-                    <CheckBoxOutlinedIcon />
-                </IconButton>
+                <Tooltip title='New List'>
+                    <IconButton aria-label="New list" size='large'>
+                        <CheckBoxOutlinedIcon />
+                    </IconButton>
+                </Tooltip>
 
-                <IconButton aria-label="New note with drawing" size='large'>
-                    <BrushIcon />
-                </IconButton>
+                <Tooltip title='New note with drawing'>
+                    <IconButton aria-label="New note with drawing" size='large'>
+                        <BrushIcon />
+                    </IconButton>
+                </Tooltip>
 
-                <IconButton aria-label="New note with image" size='large'>
-                    <ImageOutlinedIcon />
-                </IconButton>
+                <Tooltip title='New note with image'>
+                    <IconButton aria-label="New note with image" size='large'>
+                        <ImageOutlinedIcon />
+                    </IconButton>
+                </Tooltip>
+
 
             </div>
 

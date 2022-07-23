@@ -5,20 +5,77 @@ import TakeNoteOne from '../../components/TakeNoteOne/TakeNoteOne';
 import TakeNoteThree from '../../components/TakeNoteThree/TakeNoteThree';
 import TakeNoteTwo from '../../components/TakeNoteTwo/TakeNoteTwo';
 import { getNotes } from '../../services/dataservice';
+import { getArchive } from "../../services/dataservice";
+import { getReminders } from "../../services/dataservice";
+import { getTrash } from "../../services/dataservice";
+import Drawer1 from '../../components/drawer/Drawer';
 
 function Dashboard() {
 
     const [notes, setNotes] = useState([])
     const [view, setView] = React.useState(true);
+    const [drawerObj, setDrawerObj] = React.useState(false)
+    const [noteChoice, setNoteChoice] = React.useState("Notes")
+
+    const GetSelectiveNotes = () => {
+
+        let fil = [];
+
+        if (noteChoice === "Notes") {
+            getNotes().then((response) => {
+                console.log(response);
+                setNotes(response.data.data)
+                // fil = response.data.data.filter((note) => {
+                //     if (note.archive === false && note.trash === false)
+                //         return note;
+                // })
+                // console.log(fil)
+                // setNotes(fil)
+            }).catch((error) => {
+                console.log(error)
+                setNotes([])
+            })
+        }
+        else if (noteChoice === "Archive") {
+            getArchive().then((response) => {
+                console.log(response);
+                // setNotes(response.data.data)
+                fil = response.data.data.filter((note) => {
+                    if (note.archive === true && note.trash === false)
+                        return note;
+                })
+                console.log(fil)
+                setNotes(fil)
+            }).catch((error) => {
+                console.log(error)
+                setNotes([])
+            })
+        }
+        else if (noteChoice === "Reminders") {
+            console.log("hello")
+            getReminders().then((response) => {
+                console.log(response.data.data);
+                setNotes(response.data.data)
+            }).catch((error) => {
+                console.log(error)
+                setNotes([])
+            })
+        }
+        else if (noteChoice === "Trash") {
+            getTrash().then((response) => {
+                console.log(response);
+                setNotes(response.data.data)
+            }).catch((error) => {
+                console.log(error)
+                setNotes([])
+            })
+        }
+
+    }
 
     React.useEffect(() => {
-        getNotes().then((response) => {
-            console.log(response);
-            setNotes(response.data.data)
-        }).catch((error) => {
-            console.log(error)
-        })
-    }, [])
+        GetSelectiveNotes()
+    }, [noteChoice])
 
     const viewone = (view) => {
         return (
@@ -32,16 +89,30 @@ function Dashboard() {
         );
     };
 
+    const listenToNav = (noteType) => {
+        setNoteChoice(noteType)
+    }
+
+    const listenToHeader = () => {
+        setDrawerObj(!drawerObj)
+    }
+
     return (
         <div>
-            <Header />
-            
-            {viewone(view)}
+            <Header listenToHeader={listenToHeader} />
 
-            <div className="note3_container">
+            <div>
+                <Drawer1 drawerObj={drawerObj} listenToNav={listenToNav} />
 
-                {notes.map((note) => (<TakeNoteThree key={note.id} note={note} />))}
+                <div>
+                    {viewone(view)}
 
+                    <div className="note3_container">
+
+                        {notes.map((note) => (<TakeNoteThree key={note.noteId} note={note} />))}
+
+                    </div>
+                </div>
             </div>
 
         </div>

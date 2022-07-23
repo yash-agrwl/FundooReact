@@ -7,6 +7,7 @@ import './signup.css';
 import img from '../../assets/account.svg';
 import logo from '../../assets/logo.svg';
 import { createAccount } from '../../services/userservice';
+import { useNavigate } from 'react-router-dom';
 const firstNameRegex = /^[A-Z]{1}[a-z]{2,}$/;
 const lastNameRegex = /^[A-Z]{1}[a-z]{2,}$/;
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
@@ -15,6 +16,8 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).
 function Signup() {
 
     const [signUpObj, setSignUpObj] = React.useState({ firstName: "", lastName: "", email: "", password: "", confirmPassword: "" });
+
+    let navigate = useNavigate()
 
     const [regexObj, setRegexObj] = React.useState({
         firstNameBorder: false, firstNameHelper: "", lastNameBorder: false, lastNameHelper: "", emailBorder: false,
@@ -181,7 +184,7 @@ function Signup() {
 
                                 <div>
 
-                                    <FormControlLabel control={<Checkbox />} label="Show password" />
+                                    <FormControlLabel control={<Checkbox />} label="Show password"/>
 
                                 </div>
 
@@ -191,7 +194,7 @@ function Signup() {
 
                         <div className='links'>
 
-                            <Button className='textbutton'>Sign in instead</Button>
+                            <Button className='textbutton' onClick={() => navigate("/")} sx={{fontSize:"15px"}}>Sign in instead</Button>
 
                             <Button onClick={Submit} className='containedbutton' variant='contained'>Next</Button>
 

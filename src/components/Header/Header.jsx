@@ -11,8 +11,9 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import AppsRoundedIcon from '@mui/icons-material/AppsRounded';
 import keep from "../../assets/keep.png";
 import profile from "../../assets/blank-profile-32px.png";
+import { connect } from 'react-redux';
 
-function Header() {
+function Header(props) {
     return (
         <div className='header_outer-box'>
 
@@ -20,7 +21,7 @@ function Header() {
 
                 <div className="header_box1">
 
-                    <IconButton className='header_icon-button' id='menu' aria-label="main-menu" size="large">
+                    <IconButton className='header_icon-button' id='menu' aria-label="main-menu" size="large" onClick={props.listenToHeader}>
                         <MenuIcon />
                     </IconButton>
 
@@ -28,7 +29,7 @@ function Header() {
 
                         <img src={keep} alt="keep" />
 
-                        <span>Keep</span>
+                        <span>{props.title}</span>
 
                     </div>
 
@@ -75,7 +76,9 @@ function Header() {
                         <AppsRoundedIcon />
                     </IconButton>
 
-                    <img src={profile} alt="profile" />
+                    <IconButton className='header_icon-button' aria-label="app" size="small">
+                        <img src={profile} alt="profile" />
+                    </IconButton>
 
                 </div>
 
@@ -85,4 +88,11 @@ function Header() {
     )
 }
 
-export default Header
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        title: state.navReducer.title,
+    };
+};
+
+export default connect(mapStateToProps)(Header)
