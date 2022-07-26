@@ -38,6 +38,12 @@ export default function ColorPopper(props) {
 
             setColor(noteColorObj).then((response) => {
                 console.log(response);
+                if (props.noteChoice === "Notes") {
+                    props.GetNotes()
+                }
+                else if (props.noteChoice === "Archive") {
+                    props.GetArchives()
+                }
             }).catch((error) => {
                 console.log(error)
             })
@@ -55,24 +61,24 @@ export default function ColorPopper(props) {
 
             {/* <ClickAwayListener> */}
 
-                <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 4011 }}>
+            <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 4011 }}>
 
-                    <Box className='colorpoper_box' sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+                <Box className='colorpoper_box' sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
 
-                        {colors.map((color) =>
+                    {colors.map((color) =>
 
-                            <Tooltip key={color.name} title={color.name}>
+                        <Tooltip key={color.name} title={color.name}>
 
-                                <div className='colorpoper_color-list' style={{ backgroundColor: color.value }}
-                                    onClick={() => pickColor(color.value)} />
+                            <div className='colorpoper_color-list' style={{ backgroundColor: color.value }}
+                                onClick={() => pickColor(color.value)} />
 
-                            </Tooltip>
+                        </Tooltip>
 
-                        )}
+                    )}
 
-                    </Box>
+                </Box>
 
-                </Popper>
+            </Popper>
 
             {/* </ClickAwayListener> */}
 

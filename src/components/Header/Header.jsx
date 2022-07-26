@@ -27,7 +27,7 @@ function Header(props) {
 
                     <div class="header_box1_heading">
 
-                        <img src={keep} alt="keep" />
+                        {(props.title === "Keep") ? <img src={keep} alt="keep" /> : null}
 
                         <span>{props.title}</span>
 

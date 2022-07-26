@@ -131,7 +131,7 @@ function TakeNoteThree(props) {
                     </IconButton>
                 </Tooltip>
 
-                <ColorPopper action='update' id={props.note.noteId} />
+                <ColorPopper action='update' id={props.note.noteId} GetNotes={props.GetNotes} GetArchives={props.GetArchives} noteChoice={props.noteChoice} />
 
                 <Tooltip title='Add image'>
                     <IconButton className='note3_icon-button' aria-label="New list" size='small'>

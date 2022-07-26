@@ -31,6 +31,12 @@ function TakeNoteTwo(props) {
 
         createNotes(CreateNoteObj).then((response) => {
             console.log(response);
+            if (props.noteChoice === "Archive") {
+                props.GetArchives()
+            }
+            else if(props.noteChoice === "Notes"){
+                props.GetNotes()
+            }
         }).catch((error) => {
             console.log(error)
         })
@@ -56,7 +62,7 @@ function TakeNoteTwo(props) {
                     <div className="note2_box1">
 
                         <TextareaAutosize onChange={TakeTitle} className='note2_input' type='text' placeholder='Title'
-                            style={{ backgroundColor: CreateNoteObj.color }}/>
+                            style={{ backgroundColor: CreateNoteObj.color }} />
 
                         <div className="note2_box1_pin-icon">
 
@@ -71,7 +77,7 @@ function TakeNoteTwo(props) {
                     <div className="note2_box2">
 
                         <TextareaAutosize onChange={TakeDescription} className='note2_input' type="text" placeholder='Take a note...'
-                            style={{ backgroundColor: CreateNoteObj.color }} height='44px'/>
+                            style={{ backgroundColor: CreateNoteObj.color }} height='44px' />
 
                     </div>
 

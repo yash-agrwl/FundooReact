@@ -17,42 +17,43 @@ function Dashboard() {
     const [drawerObj, setDrawerObj] = React.useState(false)
     const [noteChoice, setNoteChoice] = React.useState("Notes")
 
+    const GetNotes = () => {
+        getNotes().then((response) => {
+            console.log(response);
+            setNotes(response.data.data)
+            // fil = response.data.data.filter((note) => {
+            //     if (note.archive === false && note.trash === false)
+            //         return note;
+            // })
+            // console.log(fil)
+            // setNotes(fil)
+        }).catch((error) => {
+            console.log(error)
+            setNotes([])
+        })
+    }
+
+    const GetArchives = () => {
+        getArchive().then((response) => {
+            console.log(response);
+            setNotes(response.data.data)
+        }).catch((error) => {
+            console.log(error)
+            setNotes([])
+        })
+    }
+
     const GetSelectiveNotes = () => {
 
         let fil = [];
 
         if (noteChoice === "Notes") {
-            getNotes().then((response) => {
-                console.log(response);
-                setNotes(response.data.data)
-                // fil = response.data.data.filter((note) => {
-                //     if (note.archive === false && note.trash === false)
-                //         return note;
-                // })
-                // console.log(fil)
-                // setNotes(fil)
-            }).catch((error) => {
-                console.log(error)
-                setNotes([])
-            })
+            GetNotes()
         }
         else if (noteChoice === "Archive") {
-            getArchive().then((response) => {
-                console.log(response);
-                // setNotes(response.data.data)
-                fil = response.data.data.filter((note) => {
-                    if (note.archive === true && note.trash === false)
-                        return note;
-                })
-                console.log(fil)
-                setNotes(fil)
-            }).catch((error) => {
-                console.log(error)
-                setNotes([])
-            })
+            GetArchives()
         }
         else if (noteChoice === "Reminders") {
-            console.log("hello")
             getReminders().then((response) => {
                 console.log(response.data.data);
                 setNotes(response.data.data)
@@ -83,7 +84,7 @@ function Dashboard() {
                 {view ? (
                     <TakeNoteOne listen={() => setView(!view)} />
                 ) : (
-                    <TakeNoteTwo listen={() => setView(!view)} />
+                    <TakeNoteTwo listen={() => setView(!view)} GetNotes={GetNotes} GetArchives={GetArchives} noteChoice={noteChoice} />
                 )}
             </>
         );
@@ -109,7 +110,7 @@ function Dashboard() {
 
                     <div className="note3_container">
 
-                        {notes.map((note) => (<TakeNoteThree key={note.noteId} note={note} />))}
+                        {notes.map((note) => (<TakeNoteThree key={note.noteId} note={note} GetNotes={GetNotes} GetArchives={GetArchives} noteChoice={noteChoice} />))}
 
                     </div>
                 </div>
