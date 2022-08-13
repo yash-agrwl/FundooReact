@@ -63,7 +63,7 @@ export default function ColorPopper(props) {
 
             <Popper id={id} open={open} anchorEl={anchorEl} style={{ zIndex: 4011 }}>
 
-                <Box className='colorpoper_box' sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+                <Box className='colorpoper_box' sx={{p: 1, bgcolor: 'background.paper' }}>
 
                     {colors.map((color) =>
 

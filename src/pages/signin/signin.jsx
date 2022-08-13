@@ -9,10 +9,10 @@ const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\")
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
 
 function Signin() {
+    let navigate = useNavigate();
+    
     const [signInObj, setSignInObj] = React.useState({ email: "", password: "" });
     const [regexObj, setRegexObj] = React.useState({ emailBorder: false, emailHelper: "", pwdBorder: false, pwdHelper: "" });
-
-    let navigate = useNavigate();
 
     const TakeEmail = (event) => {
         setSignInObj((prevState) => ({ ...prevState, email: event.target.value }))

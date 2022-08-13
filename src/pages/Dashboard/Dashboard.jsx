@@ -110,7 +110,11 @@ function Dashboard() {
 
                     <div className="note3_container">
 
-                        {notes.map((note) => (<TakeNoteThree key={note.noteId} note={note} GetNotes={GetNotes} GetArchives={GetArchives} noteChoice={noteChoice} />))}
+                        {notes.map((note) => (
+
+                            <TakeNoteThree key={note.noteId} note={note} GetNotes={GetNotes} GetArchives={GetArchives}
+                                noteChoice={noteChoice} />
+                        ))}
 
                     </div>
                 </div>
